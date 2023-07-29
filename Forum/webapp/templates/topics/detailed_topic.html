@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Добавить проект{% endblock %}
+{% block content %}
+    <ul class="list-group">
+        <li class="list-group-item">{{ topic.description }}</li>
+        <a href="{% url "webapp:comment" topic.pk %}" class="btn btn-primary">Ответить</a>
+    </ul>
+    <h3>Комментарии:</h3>
+    {% for comment in comments %}
+        <hr>
+        <b class="disabled">{{ comment.author }}</b>
+        <p>{{ comment.text }}</p>
+        <a href="{% url "webapp:update_comment" comment.pk %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url "webapp:delete_comment" comment.pk %}" class="btn btn-primary">Удалить</a>
+        <hr>
+    {% endfor %}
+{% endblock %}

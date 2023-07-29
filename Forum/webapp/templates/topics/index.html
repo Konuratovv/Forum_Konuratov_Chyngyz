@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <table class="table table-hover">
+        <tbody>
+        {% for topic in topics %}
+            <tr>
+                <td><a href="{% url "webapp:topic_detail" topic.pk%}">{{ topic.title }}({{ topic.qty }})</a></td>
+                <td>{{ topic.created_at }}</td>
+                <td>{{ topic.author }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
